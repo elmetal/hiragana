@@ -3,7 +3,9 @@ package com.mansei.hiragana.repository.item
 import com.mansei.hiragana.domain.item.Description
 import com.mansei.hiragana.domain.item.Item
 import com.mansei.hiragana.domain.item.ItemRepository
+import org.springframework.stereotype.Repository
 
+@Repository
 class ItemRepositoryImpl : ItemRepository{
     override fun fetchAll(): List<Item> {
         val itemList = (1..10).map {
