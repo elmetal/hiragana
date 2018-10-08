@@ -1,16 +1,25 @@
 <template>
- <div>${item.name}</div>
- <img :src="item.photo" :alt="DisplayNpImg(item)"></img>
+  <div>${item.name}</div>
+  <img :src="item.photo" :alt="DisplayNpImg(item)"/>
 </template>
 
 <script>
-import baseComponent.js
-  export default{
-  props:['item']
-    computed :{
+
+  export default {
+    name: "ItemComponent",
+    props: ['item'],
+
+    computed: {
+      /**
+       * @return {string}
+       */
       DisplayNpImg(item) {
-      return item.name + 'のIMG'
+        return item.name + 'のIMG'
       }
     }
   }
 </script>
+
+<style scoped>
+
+</style>

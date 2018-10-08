@@ -1,19 +1,20 @@
 const axiosBase = require('axios.js')
-const axios = axiosBase.create({  baseURL: 'http://localhost:3030',
-                                  headers: {
-                                    'Content-Type': 'application/json',
-                                    'X-Requested-With': 'XMLHttpRequest'
-                                  },
-                                  responseType: 'json',
-                                  timeout: 1000
-                                });})
+const axios = axiosBase.create({
+  baseURL: 'http://localhost:3030',
+  headers: {
+    'Content-Type': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest'
+  },
+  responseType: 'json',
+  timeout: 1000
+});
 
+class BaseComponent {
 
-class BaseComponent{
+  constructor() {
+  }
 
- constructor(){}
-
- function bindRequest(method,url) {
-  return axios.request({method:method,url:url})
+  bindRequest(method, url) {
+    return axios.request({method: method, url: url})
   }
 }
