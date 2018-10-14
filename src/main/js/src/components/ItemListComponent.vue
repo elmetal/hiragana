@@ -1,19 +1,19 @@
 <template>
   <ul>
-    <li v-for="item in itemList">
+    <li v-bind:key="item.name" v-for="item in itemList">
       <item-component :item="item"/>
     </li>
   </ul>
 </template>
 
 <script>
-  import ItemComponent from "./ItemComponent"
-  import "./baseComponent"
-  import "../item/item"
+  import ItemComponent from './ItemComponent'
+  import BaseComponent from './baseComponent'
+  import Item from '../item/item'
 
   export default {
-    name: "ItemListComponent",
-    components: [ItemComponent],
+    name: 'ItemListComponent',
+    components: {ItemComponent},
 
     data() {
       return {
@@ -22,17 +22,21 @@
     },
 
     mounted() {
-      new BaseComponent().bindRequest("GET", "/item/list")
+      let self = this;
+      new BaseComponent().bindRequest('GET', '/item/list.json')
         .then((response) => {
-          this.itemList = response.data.map(item => {
-            new Item(item.name, item.photo)
+          self.itemList = response.data.map(item => {
+            // eslint-disable-next-line
+            return new Item(item.name, item.description.photo)
           })
         })
         .catch(err => {
           console.error(err)
         })
-    },
+    }
+
   }
+
 </script>
 
 <style scoped>
