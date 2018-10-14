@@ -1,20 +1,22 @@
 <template>
-  <div>${item.name}</div>
-  <img :src="item.photo" :alt="DisplayNpImg(item)"/>
+  <div>
+    <div>{{item.name}}</div>
+    <img :src="item.photo" :alt="displayNoImage"/>
+  </div>
 </template>
 
 <script>
 
   export default {
-    name: "ItemComponent",
+    name: 'ItemComponent',
     props: ['item'],
 
     computed: {
       /**
        * @return {string}
        */
-      DisplayNpImg(item) {
-        return item.name + 'のIMG'
+      displayNoImage() {
+        return this.item.name + 'のIMG'
       }
     }
   }
